@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >Movies List</title>
+</head>
+<body style="text-align: center;">
+    {% extends 'parent.html' %}
+
+    {% block content %} 
+        <h1 style="text-decoration: underline;color : black;">Movies List</h1>
+        {% for movie in movies %}
+        <div style="padding : 15px;">
+            <h2>Title : {{movie.title | upper}}</h2>
+            <p>Date : {{movie.year | default:'Unknown'}}</p>
+            <p>Director : {{movie.director}}</p>
+            <p>Actor : {{movie.actor | default:'Unknown'}}</p>
+            {% comment %} {% if movie.success %}
+            <p>Success : <span style="color: forestgreen;">Yes</span></p>
+            {% else %}
+            <p>Success : <span style="color: crimson;">No</span></p>
+            {% endif %} {% endcomment %}
+            <div class="btns">
+                <a href="{% url 'edit' movie.id %}" class="edit">Edit</a>
+                <a href="{% url 'delete' movie.id %}" class="delete">Delete</a>
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+    {% endblock content %}
+</body>
+</html>
