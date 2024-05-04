@@ -12,7 +12,7 @@
         <h2>Movie Pics</h2>
         {% for pic in movie_pics %}
             <div>
-                <img height="250" width="300" src="/media/{{ pic.photo }}" alt="{{pic.movie_name}}">
+                <img height="250" width="300" src="{{ pic.photo.url }}" alt="{{pic.movie_name}}">
                 <label >{{pic.movie_name}}</label>
             </div>
         {% endfor %}

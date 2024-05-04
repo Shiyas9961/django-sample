@@ -10,12 +10,20 @@
 
     {% block content %} 
         <h1 style="text-decoration: underline;color : black;">Movies List</h1>
-        {% for movie in movies %}
+        <span>{{ visit }} times visitted</span>
+        {% for movie in movies_list %}
         <div style="padding : 15px;">
-            <h2>Title : {{movie.title | upper}}</h2>
-            <p>Date : {{movie.year | default:'Unknown'}}</p>
-            <p>Director : {{movie.director}}</p>
-            <p>Actor : {{movie.actor | default:'Unknown'}}</p>
+            <div class="movie_cls">
+                <div>
+                    <img height="200" width = "133.32"  src="{{ movie.movie_pic.url }}" alt="">
+                </div>
+                <div>
+                    <h2>Title : {{movie.title | upper}}</h2>
+                    <p>Date : {{movie.year | default:'Unknown'}}</p>
+                    <p>Director : {{movie.director}}</p>
+                    <p>Actors : {{movie.actors | default:'Unknown'}}</p>
+                </div>
+            </div>
             {% comment %} {% if movie.success %}
             <p>Success : <span style="color: forestgreen;">Yes</span></p>
             {% else %}
